@@ -7,8 +7,6 @@ import com.animebracket.android.Util.callbacks.JsonStringCallback;
 import com.goebl.david.Response;
 import com.goebl.david.Webb;
 
-import org.json.JSONObject;
-
 /**
  * Created by Noah Pederson on 1/22/2015.
  */
@@ -33,14 +31,29 @@ public class UserInfoTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
         String cookie = params[0];
 
-        Response<JSONObject> response = webb
-                .post(Constants.REDDIT_LOGGED_IN_USER_DETAILS_URL)
-                .param("Cookie", cookie)
+        Response<String> response = webb
+                .post(Constants.USER_DETAILS_URL)
+                .header("Cookie", cookie)
                 .ensureSuccess()
-                .asJsonObject();
+                .asString();
 
-        String jsonString = response.toString();
+        return response.getBody();
+    }
 
-        return null;
+    /**
+     * <p>Runs on the UI thread after {@link #doInBackground}. The
+     * specified result is the value returned by {@link #doInBackground}.</p>
+     * <p/>
+     * <p>This method won't be invoked if the task was cancelled.</p>
+     *
+     * @param s The result of the operation computed by {@link #doInBackground}.
+     * @see #onPreExecute
+     * @see #doInBackground
+     * @see #onCancelled(Object)
+     */
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        callback.onJsonStringReceived(s);
     }
 }
