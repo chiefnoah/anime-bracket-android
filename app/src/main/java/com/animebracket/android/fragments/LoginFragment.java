@@ -21,6 +21,7 @@ import com.animebracket.android.Util.Constants;
 public class LoginFragment extends Fragment {
 
     LoginFragmentCallback callback;
+    WebView rootView;
 
     public LoginFragment() {
     }
@@ -28,7 +29,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        WebView rootView = (WebView) inflater.inflate(R.layout.fragment_login, container, false);
+        rootView = (WebView) inflater.inflate(R.layout.fragment_login, container, false);
         rootView.setWebViewClient(new WebViewClient() {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 if (url.equals(Constants.BASE_URL + "/") && callback != null) {
@@ -54,6 +55,14 @@ public class LoginFragment extends Fragment {
             throw new ClassCastException(activity.toString()
                     + " must implement LoginFragmentCallback");
         }
+    }
+
+    public boolean onBackPressed() {
+        if(rootView.canGoBack()) {
+            rootView.goBack();
+            return true;
+        }
+        return false;
     }
 
     public interface LoginFragmentCallback {
