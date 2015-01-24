@@ -29,15 +29,18 @@ public class UserInfoTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String cookie = params[0];
+        try {
+            String cookie = params[0];
 
-        Response<String> response = webb
-                .post(Constants.USER_DETAILS_URL)
-                .header("Cookie", cookie)
-                .ensureSuccess()
-                .asString();
+            Response<String> response = webb
+                    .post(Constants.USER_DETAILS_URL)
+                    .header("Cookie", cookie)
+                    .asString();
 
-        return response.getBody();
+            return response.getBody();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**
