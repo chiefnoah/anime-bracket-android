@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.animebracket.android.R;
-import com.animebracket.android.Util.CONSTANTS;
+import com.animebracket.android.Util.Constants;
 import com.animebracket.android.Util.beans.Bracket;
 import com.animebracket.android.Util.beans.CharacterInfo;
 import com.goebl.david.Response;
@@ -46,8 +46,8 @@ public class CurrentBracketsAdapter extends RecyclerView.Adapter<CurrentBrackets
     public void onBindViewHolder(CurrentBracketsAdapter.ViewHolder holder, int position) {
         Bracket cBracket = currentBrackets.get(position);
         holder.bracketTitle.setText(cBracket.getName());
-        holder.actionButton.setText(CONSTANTS.BRACKET_ACTION_STATE[cBracket.getState()]);
-        holder.infoText.setText(CONSTANTS.BRACKET_INFO_STATE[cBracket.getState()]);
+        holder.actionButton.setText(Constants.BRACKET_ACTION_STATE[cBracket.getState()]);
+        holder.infoText.setText(Constants.BRACKET_INFO_STATE[cBracket.getState()]);
 
         CharacterInfo[] cRandomCharacterInfos = cBracket.getRandomCharacterInfos();
         for(int i = 0; i < cRandomCharacterInfos.length; i++) {
@@ -111,11 +111,11 @@ public class CurrentBracketsAdapter extends RecyclerView.Adapter<CurrentBrackets
         protected Void doInBackground(Void... params) {
             try {
                 Webb webb = Webb.create();
-                webb.setBaseUri(CONSTANTS.BASE_URL);
+                webb.setBaseUri(Constants.BASE_URL);
                 Gson gson = new Gson();
 
                 Response<String> response = webb
-                        .get(CONSTANTS.CHARACTERS_LIST_URL)
+                        .get(Constants.CHARACTERS_LIST_URL)
                         .param("bracketId", currentBrackets.get(bracketIndex).getId())
                         .param("count", 6)
                         .ensureSuccess()

@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.animebracket.android.Util.CONSTANTS;
+import com.animebracket.android.Util.Constants;
 import com.animebracket.android.Util.beans.UserInfo;
 import com.animebracket.android.Util.callbacks.JsonStringCallback;
 import com.animebracket.android.Util.tasks.BasicRequestTask;
@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
         redditUsernameTextView = (TextView) findViewById(R.id.reddit_username_text_view);
 
         drawerToggle = new ActionBarDrawerToggle(this, navDrawer, R.string.app_name, R.string.app_name) {};
-        globalSharedPreferences = getSharedPreferences(CONSTANTS.FLAGS.GLOBAL_PREFERENCES, MODE_MULTI_PROCESS);
+        globalSharedPreferences = getSharedPreferences(Constants.FLAGS.GLOBAL_PREFERENCES, MODE_MULTI_PROCESS);
         globalSharedEditor = globalSharedPreferences.edit();
 
         //Set up the navbar
@@ -67,8 +67,8 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
         //back to API 14, we need to use this.
 
         basicRequestTask = new BasicRequestTask(this);
-        String cookie = CookieManager.getInstance().getCookie(CONSTANTS.BASE_URL) + "";
-        basicRequestTask.execute(CONSTANTS.USER_DETAILS_URL, cookie);
+        String cookie = CookieManager.getInstance().getCookie(Constants.BASE_URL) + "";
+        basicRequestTask.execute(Constants.USER_DETAILS_URL, cookie);
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
@@ -137,7 +137,7 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
     public void onJsonStringReceived(String jsonString) {
         //If the string is null, it means the device couldn't reach the animebracket servers
         if(jsonString == null) {
-            Log.d(CONSTANTS.FLAGS.JSON, "Unable to connect to animebracket.com");
+            Log.d(Constants.FLAGS.JSON, "Unable to connect to animebracket.com");
             //TODO: Show dialogue box
             loggedIn = false;
         }
@@ -145,7 +145,7 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
         try {
             Gson gson = new Gson();
             userInfo = gson.fromJson(jsonString, UserInfo.class);
-            Log.d(CONSTANTS.FLAGS.JSON, "Loaded json from http request: " + jsonString);
+            Log.d(Constants.FLAGS.JSON, "Loaded json from http request: " + jsonString);
         } catch (Exception e) {}
 
         //If userInfo is null, you aren't logged in and it should show the login fragment
@@ -156,13 +156,13 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
                     .commit();
             Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show();
             loggedIn = false;
-            globalSharedEditor.putBoolean(CONSTANTS.FLAGS.LOGGEDIN, false).commit();
+            globalSharedEditor.putBoolean(Constants.FLAGS.LOGGEDIN, false).commit();
         } else {
             //This means you're logged in. Load up the brackets :D
             getFragmentManager().beginTransaction()
                     .replace(R.id.container, new RunningBracketsFragment())
                     .commit();
-            globalSharedEditor.putBoolean(CONSTANTS.FLAGS.LOGGEDIN, true).commit();
+            globalSharedEditor.putBoolean(Constants.FLAGS.LOGGEDIN, true).commit();
             redditUsernameTextView.setText("/u/" + userInfo.getName());
             loggedIn = true;
         }
@@ -173,8 +173,8 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
         //Double check to make sure the cookie worked
         CookieSyncManager.getInstance().sync();
         basicRequestTask = new BasicRequestTask(this);
-        String cookie = CookieManager.getInstance().getCookie(CONSTANTS.BASE_URL) + "";
-        basicRequestTask.execute(CONSTANTS.USER_DETAILS_URL, cookie);
+        String cookie = CookieManager.getInstance().getCookie(Constants.BASE_URL) + "";
+        basicRequestTask.execute(Constants.USER_DETAILS_URL, cookie);
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, new StartupFragment())
                 .commit();
@@ -198,7 +198,7 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
             logOut(v);
             return;
         }
-        String url = CONSTANTS.REDDIT_URL + redditUsernameTextView.getText();
+        String url = Constants.REDDIT_URL + redditUsernameTextView.getText();
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);

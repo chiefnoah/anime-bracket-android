@@ -2,7 +2,7 @@ package com.animebracket.android.Util.tasks;
 
 import android.os.AsyncTask;
 
-import com.animebracket.android.Util.CONSTANTS;
+import com.animebracket.android.Util.Constants;
 import com.animebracket.android.Util.callbacks.JsonStringCallback;
 import com.goebl.david.Response;
 import com.goebl.david.Webb;
@@ -24,7 +24,7 @@ public class BasicRequestTask extends AsyncTask<String, Void, String> {
         super.onPreExecute();
 
         webb = Webb.create();
-        webb.setBaseUri(CONSTANTS.BASE_URL);
+        webb.setBaseUri(Constants.BASE_URL);
     }
 
     @Override

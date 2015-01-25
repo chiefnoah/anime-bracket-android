@@ -13,4 +13,8 @@
     <color name="colorTextSecondary">#727272</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorDivider">#B6B6B6</color>
+
+
+    <color name="cardBackground">#CCD3D4D5</color>
+    <color name="cardActionText">#697E77</color>
 </resources>

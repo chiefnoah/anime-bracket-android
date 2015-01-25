@@ -3,7 +3,6 @@ package com.animebracket.android.fragments;
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +12,7 @@ import android.webkit.CookieManager;
 import android.widget.Toast;
 
 import com.animebracket.android.R;
-import com.animebracket.android.Util.CONSTANTS;
+import com.animebracket.android.Util.Constants;
 import com.animebracket.android.Util.adapters.CurrentBracketsAdapter;
 import com.animebracket.android.Util.beans.Bracket;
 import com.animebracket.android.Util.callbacks.JsonStringCallback;
@@ -21,7 +20,6 @@ import com.animebracket.android.Util.tasks.BasicRequestTask;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,9 +41,9 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String cookie = CookieManager.getInstance().getCookie(CONSTANTS.BASE_URL) + "";
+        String cookie = CookieManager.getInstance().getCookie(Constants.BASE_URL) + "";
         bracketsLoader = new BasicRequestTask(this);
-        bracketsLoader.execute(CONSTANTS.BRACKETS_LIST_URL, cookie);
+        bracketsLoader.execute(Constants.BRACKETS_LIST_URL, cookie);
     }
 
     @Override
@@ -89,14 +87,14 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
             //iterate through array list and remove those that aren't running
             for (Bracket b : cBrackets) {
                 switch (b.getState()) {
-                    case CONSTANTS.BRACKET_STATE_NOMINATIONS:
-                    case CONSTANTS.BRACKET_STATE_ELIMINATIONS:
-                    case CONSTANTS.BRACKET_STATE_VOTING:
-                    case CONSTANTS.BRACKET_STATE_WILDCARD:
+                    case Constants.BRACKET_STATE_NOMINATIONS:
+                    case Constants.BRACKET_STATE_ELIMINATIONS:
+                    case Constants.BRACKET_STATE_VOTING:
+                    case Constants.BRACKET_STATE_WILDCARD:
                         currentBrackets.add(b);
                         break;
-                    case CONSTANTS.BRACKET_STATE_FINAL:
-                    case CONSTANTS.BRACKET_STATE_HIDDEN:
+                    case Constants.BRACKET_STATE_FINAL:
+                    case Constants.BRACKET_STATE_HIDDEN:
                         break;
                 }
             }

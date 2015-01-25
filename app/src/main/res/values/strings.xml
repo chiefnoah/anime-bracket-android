@@ -5,11 +5,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="nav_drawer_buttons_text">
-        <item>Current Brackets</item>
-        <item>Past Brackets</item>
-        <item>Settings</item>
-        <item>Logout</item>
-    </string-array>
+    <string name="current_brackets">Current Brackets</string>
+    <string name="past_brackets">Past Brackets</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="voting_as">Voting as:</string>
+    <string name="log_in">Log in</string>
 
 </resources>
