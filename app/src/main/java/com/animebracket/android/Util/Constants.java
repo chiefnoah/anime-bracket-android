@@ -42,6 +42,9 @@ public class Constants {
         public final static String JSON = "JSON";
         public final static String LOGGEDIN = "LOGGED IN";
         public final static String GLOBAL_PREFERENCES = "GLOBAL PREFERENCES";
+        public final static String BRACKET_ARG = "BRACKET ARG";
+        public final static String USER_INFO_BUNDLE = "USER INFO";
+        public final static String RUNNING_BRACKETS_BUNDLE = "RUNNING BRACKETS";
     }
     //Log/debug Constants
 
