@@ -65,6 +65,12 @@ public class LoginFragment extends Fragment {
         return false;
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callback = null;
+    }
+
     public interface LoginFragmentCallback {
         public void onLoginFinish();
     }
