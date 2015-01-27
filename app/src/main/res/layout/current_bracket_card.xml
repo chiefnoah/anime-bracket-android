@@ -100,7 +100,7 @@
                 android:layout_marginBottom="14dp"
                 android:text="Contest Title Placeholder"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="26dp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <Button
@@ -114,7 +114,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/cardActionText"
                 style="?android:attr/borderlessButtonStyle"
-                android:textSize="22dp"
+                android:textSize="22sp"
                 android:clickable="true"
                 android:layout_margin="8dp" />
 

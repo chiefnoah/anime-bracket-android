@@ -15,6 +15,8 @@ import com.animebracket.android.R;
 import com.animebracket.android.Util.Constants;
 import com.animebracket.android.Util.beans.Bracket;
 import com.animebracket.android.Util.beans.CharacterInfo;
+import com.animebracket.android.Util.callbacks.BracketCardActionCallback;
+import com.animebracket.android.fragments.RunningBracketsFragment;
 import com.goebl.david.Response;
 import com.goebl.david.Webb;
 import com.google.gson.Gson;
@@ -27,9 +29,13 @@ import java.util.ArrayList;
  */
 public class CurrentBracketsAdapter extends RecyclerView.Adapter<CurrentBracketsAdapter.ViewHolder> {
     ArrayList<Bracket> currentBrackets;
+    BracketCardActionCallback callback;
+    RunningBracketsFragment fragment;
 
-    public CurrentBracketsAdapter(ArrayList<Bracket> currentBrackets) {
+    public CurrentBracketsAdapter(RunningBracketsFragment fragment, BracketCardActionCallback callback, ArrayList<Bracket> currentBrackets) {
         this.currentBrackets = currentBrackets;
+        this.callback = callback;
+        this.fragment = fragment;
     }
 
     @Override
@@ -44,6 +50,7 @@ public class CurrentBracketsAdapter extends RecyclerView.Adapter<CurrentBrackets
 
     @Override
     public void onBindViewHolder(CurrentBracketsAdapter.ViewHolder holder, int position) {
+        final int finalPosition = position; //This is required to access the position in the onClickListener
         Bracket cBracket = currentBrackets.get(position);
         holder.bracketTitle.setText(cBracket.getName());
         holder.actionButton.setText(Constants.BRACKET_ACTION_STATE[cBracket.getState()]);
@@ -53,6 +60,14 @@ public class CurrentBracketsAdapter extends RecyclerView.Adapter<CurrentBrackets
         for(int i = 0; i < cRandomCharacterInfos.length; i++) {
             Picasso.with(holder.characterImages[i].getContext()).load(Uri.parse(cRandomCharacterInfos[i].getImage())).into(holder.characterImages[i]);
         }
+
+
+        holder.actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.onActionButtonClick(fragment, currentBrackets.get(finalPosition));
+            }
+        });
     }
 
     /**
