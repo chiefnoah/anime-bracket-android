@@ -11,5 +11,5 @@
     <string name="logout">Logout</string>
     <string name="voting_as">Voting as:</string>
     <string name="log_in">Log in</string>
-
+    <string name="accept_rules">This seems fair. Take me to the form</string>
 </resources>
