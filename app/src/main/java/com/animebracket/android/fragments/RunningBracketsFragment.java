@@ -1,6 +1,7 @@
 package com.animebracket.android.fragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import com.animebracket.android.R;
 import com.animebracket.android.Util.Constants;
 import com.animebracket.android.Util.adapters.CurrentBracketsAdapter;
 import com.animebracket.android.Util.beans.Bracket;
+import com.animebracket.android.Util.callbacks.BracketCardActionCallback;
 import com.animebracket.android.Util.callbacks.JsonStringCallback;
 import com.animebracket.android.Util.tasks.BasicRequestTask;
 import com.google.gson.Gson;
@@ -25,6 +27,8 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class RunningBracketsFragment extends Fragment implements JsonStringCallback {
+
+    BracketCardActionCallback callback;
 
     private RecyclerView rootView;
     private CurrentBracketsAdapter cAdapter;
@@ -51,7 +55,7 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = (RecyclerView) inflater.inflate(R.layout.brackets_card_list, container, false);
-        cAdapter = new CurrentBracketsAdapter(currentBrackets);
+        cAdapter = new CurrentBracketsAdapter(this, callback, currentBrackets);
 
         rootView.setHasFixedSize(false); //We don't know the size of the list
 
@@ -60,6 +64,17 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
         rootView.setAdapter(cAdapter);
 
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            callback = (BracketCardActionCallback) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    " must implement RunningBracketsFragmentCallback");
+        }
     }
 
     @Override
@@ -101,5 +116,16 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
 
             cAdapter.updateDataset(currentBrackets);
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callback = null;
+    }
+
+    //Quick reference to self so I can access it from inner classes
+    public RunningBracketsFragment getInstance() {
+        return this;
     }
 }
