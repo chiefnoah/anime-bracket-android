@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="4dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="BRACKET TITLE PLACEHOLDER"
+        android:id="@+id/bracket_title_text_view"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/character_nomination"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/character_name"
+        android:id="@+id/textView3"
+        android:layout_marginTop="24dp"
+        android:labelFor="@+id/character_name_autocomplete_edit_text" />
+
+    <AutoCompleteTextView
+        android:id="@+id/character_name_autocomplete_edit_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:focusable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/source"
+        android:id="@+id/textView7"
+        android:layout_marginTop="24dp"
+        android:labelFor="@+id/character_source_edit_text" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/character_source_edit_text"
+        android:layout_gravity="center_horizontal"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/link_to_picture"
+        android:id="@+id/textView8"
+        android:layout_marginTop="24dp"
+        android:labelFor="@+id/link_to_picture_edit_text" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/link_to_picture_edit_text"
+        android:inputType="textUri"
+        android:singleLine="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nominate"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:textSize="24sp"
+        android:textColor="@color/colorText" />
+</LinearLayout>
