@@ -41,7 +41,7 @@ public class AutoCompleteNameAdapter extends ArrayAdapter<CharacterInfo> impleme
         if(rootView == null) {
             String inflater = Context.LAYOUT_INFLATER_SERVICE;
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(inflater);
-            rootView = layoutInflater.inflate(resource, parent, true);
+            rootView = layoutInflater.inflate(resource, parent, false);
 
             viewHolder = new ViewHolder();
             viewHolder.characterImage = (ImageView) rootView.findViewById(R.id.suggested_character_image_view);

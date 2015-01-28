@@ -17,6 +17,7 @@ public class Constants {
     public final static String REDDIT_OAUTH_URL = "/api/login/";
     public final static String USER_DETAILS_URL = "/api/user/";
     public final static String POST_VOTE_URL = "/submit/";
+    public final static String TYPEAHEAD_URL = "/typeahead/";
 
     //Reddit
     public final static String REDDIT_URL = "http://reddit.com";

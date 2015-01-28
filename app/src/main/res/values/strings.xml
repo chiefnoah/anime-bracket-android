@@ -12,4 +12,9 @@
     <string name="voting_as">Voting as:</string>
     <string name="log_in">Log in</string>
     <string name="accept_rules">This seems fair. Take me to the form</string>
+    <string name="character_nomination">Character Nomination</string>
+    <string name="character_name">Character name:</string>
+    <string name="source">Source:</string>
+    <string name="link_to_picture">Link to Picture:</string>
+    <string name="nominate">Nominate</string>
 </resources>

@@ -225,7 +225,9 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
 
                 } else {
                     newFragment = new NominateFragment();
-
+                    Bundle args = new Bundle();
+                    args.putSerializable(Constants.FLAGS.BRACKET_ARG, bracket);
+                    newFragment.setArguments(args);
                 }
                 Bundle args = new Bundle();
                 args.putSerializable(Constants.FLAGS.BRACKET_ARG, bracket);
@@ -245,9 +247,6 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
             default:
                 Toast.makeText(this, "There was an error", Toast.LENGTH_SHORT).show();
         }
-        FragmentManager fm = getFragmentManager();
-        int derp = 9;
-
         //TODO: have a boolean determine if the fragment transaction should be added to the backstack
         if (newFragment != null) {
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
