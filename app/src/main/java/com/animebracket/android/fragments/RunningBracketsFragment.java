@@ -114,7 +114,9 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
                 }
             }
 
-            cAdapter.updateDataset(currentBrackets);
+            if(cAdapter != null) {
+                cAdapter.updateDataset(currentBrackets);
+            }
         }
     }
 

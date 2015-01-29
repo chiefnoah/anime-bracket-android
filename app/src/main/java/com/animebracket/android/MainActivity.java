@@ -82,6 +82,7 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
             if(user == null) {
                 basicRequestTask = new BasicRequestTask(this);
                 String cookie = CookieManager.getInstance().getCookie(Constants.BASE_URL) + "";
+
                 basicRequestTask.execute(Constants.USER_DETAILS_URL, cookie);
             }
         } else {
@@ -113,7 +114,9 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
     @Override
     protected void onStop() {
         super.onStop();
-        basicRequestTask.cancel(true);
+        if(basicRequestTask != null) {
+            basicRequestTask.cancel(true);
+        }
     }
 
     @Override

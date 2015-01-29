@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.animebracket.android.R;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 public class RulesFragment extends Fragment {
 
     Bracket bracket;
-    LinearLayout rootView;
+    ScrollView rootView;
     TextView rulesTextView;
     Button actionButton;
     BracketCardActionCallback callback;
@@ -58,7 +59,7 @@ public class RulesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = (LinearLayout) inflater.inflate(R.layout.rules_card, container, false);
+        rootView = (ScrollView) inflater.inflate(R.layout.rules_card, container, false);
         rulesTextView = (TextView) rootView.findViewById(R.id.rules_text_view);
         actionButton = (Button) rootView.findViewById(R.id.action_button);
 

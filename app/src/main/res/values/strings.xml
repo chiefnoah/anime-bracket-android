@@ -17,4 +17,6 @@
     <string name="source">Source:</string>
     <string name="link_to_picture">Link to Picture:</string>
     <string name="nominate">Nominate</string>
+    <string name="false_text">false</string>
+    <string name="empty_string" />
 </resources>
