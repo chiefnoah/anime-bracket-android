@@ -3,15 +3,15 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@color/cardBackground"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:minHeight="90dp">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/suggested_character_image_view"
-        android:minWidth="64dp"
-        android:minHeight="64dp"
-        android:background="@color/colorAccent" />
+        android:background="@color/colorAccent"
+        android:maxHeight="32dp" />
 
     <TextView
         android:layout_width="wrap_content"

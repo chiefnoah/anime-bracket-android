@@ -16,7 +16,7 @@ public class Constants {
     public final static String BRACKET_ALL_ROUNDS_URL = "/api/bracket/"; //followed by bracket ID
     public final static String REDDIT_OAUTH_URL = "/api/login/";
     public final static String USER_DETAILS_URL = "/api/user/";
-    public final static String POST_VOTE_URL = "/submit/";
+    public final static String SUBMIT_URL = "/submit/";
     public final static String TYPEAHEAD_URL = "/typeahead/";
 
     //Reddit
@@ -46,6 +46,10 @@ public class Constants {
         public final static String BRACKET_ARG = "BRACKET ARG";
         public final static String USER_INFO_BUNDLE = "USER INFO";
         public final static String RUNNING_BRACKETS_BUNDLE = "RUNNING BRACKETS";
+        public final static String NOMINATE_CHARACTER_NAME_TEXT = "NOMINATE CHARACTER NAME TEXT";
+        public final static String NOMINATE_CHARACTER_SOURCE_TEXT = "NOMINATE CHARACTER SOURCE TEXT";
+        public final static String NOMINATE_CHARACTER_IMAGE_TEXT = "NOMINATE CHARACTER IMAGE TEXT";
+        public final static String NOMINATE_CHARACTER_VERIFIED_TEXT = "NOMINATE CHARACTER VERIFIED TEXT";
     }
     //Log/debug Constants
 

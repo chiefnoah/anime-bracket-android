@@ -18,6 +18,24 @@ public class Bracket implements Serializable {
     private String rules;
     private int source;
     private int advanceHour;
+    private String nameLabel;
+    private String sourceLabel;
+
+    public String getNameLabel() {
+        return nameLabel;
+    }
+
+    public void setNameLabel(String nameLabel) {
+        this.nameLabel = nameLabel;
+    }
+
+    public String getSourceLabel() {
+        return sourceLabel;
+    }
+
+    public void setSourceLabel(String sourceLabel) {
+        this.sourceLabel = sourceLabel;
+    }
 
     private CharacterInfo[] randomCharacterInfos = new CharacterInfo[0];
 
