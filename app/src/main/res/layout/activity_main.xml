@@ -3,81 +3,97 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize" />
+        </android.support.design.widget.AppBarLayout>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/nav_drawer"
         android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:divider="@android:color/transparent"
+        android:layout_gravity="start"
         android:background="@color/colorPrimaryDark"
         android:clickable="false"
-        android:translationZ="2dp"
-        android:layout_gravity="start">
+        android:divider="@android:color/transparent"
+        android:elevation="16dp"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:translationZ="2dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="top"
             android:background="@color/colorPrimary"
             android:gravity="center_vertical"
-            android:layout_gravity="top">
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/voting_as_text_view"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/voting_as"
-                android:id="@+id/voting_as_text_view"
                 android:layout_gravity="center_horizontal"
-                android:paddingLeft="16dp" />
+                android:paddingLeft="16dp"
+                android:text="@string/voting_as"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/reddit_username_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/log_in"
-                android:id="@+id/reddit_username_text_view"
-                android:paddingLeft="20dp"
-                android:textColor="@color/abc_search_url_text"
                 android:clickable="true"
-                android:onClick="openReddit" />
+                android:onClick="openReddit"
+                android:paddingLeft="20dp"
+                android:text="@string/log_in"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/abc_search_url_text" />
         </LinearLayout>
 
         <Button
+            android:id="@+id/textView4"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            style="?android:attr/borderlessButtonStyle"
-            android:text="@string/current_brackets"
             android:gravity="start"
-            android:id="@+id/textView4"
+            android:onClick="onCurrentBracketClick"
+            android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:onClick="onCurrentBracketClick"/>
+            android:text="@string/current_brackets"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
+            android:id="@+id/textView5"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            style="?android:attr/borderlessButtonStyle"
-            android:text="@string/past_brackets"
             android:gravity="start"
-            android:id="@+id/textView5"
+            android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+            android:text="@string/past_brackets"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Space
             android:layout_width="match_parent"
@@ -85,34 +101,33 @@
             android:layout_weight="1000" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            style="?android:attr/borderlessButtonStyle"
-            android:text="@string/logout"
-            android:id="@+id/textView"
+            android:layout_weight="1"
             android:gravity="start"
+            android:onClick="logOut"
+            android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingBottom="8dp"
             android:paddingTop="8dp"
-            android:layout_weight="1"
-            android:onClick="logOut"/>
+            android:text="@string/logout"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
+            android:id="@+id/textView6"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            style="?android:attr/borderlessButtonStyle"
+            android:layout_weight="1"
             android:gravity="start"
-            android:text="@string/settings"
-            android:id="@+id/textView6"
+            android:onClick="openSettings"
+            android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_weight="1"
-            android:onClick="openSettings"/>
+            android:text="@string/settings"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

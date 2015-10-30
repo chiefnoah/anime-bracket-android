@@ -10,8 +10,10 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,6 +66,8 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
         navDrawer.setDrawerListener(drawerToggle);
 
         //Set up actionbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -95,6 +99,9 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
     protected void onResume() {
         super.onResume();
         CookieSyncManager.getInstance().startSync();
+        if(user != null & redditUsernameTextView != null) {
+            redditUsernameTextView.setText("/u/" + user.getName());
+        }
     }
 
     @Override
@@ -238,6 +245,7 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
                 break;
             case Constants.BRACKET_STATE_ELIMINATIONS:
                 //TODO: switch to eliminations fragment
+                Toast.makeText(this, "Bracket is in eliminations. Not implemented yet... ;_;", Toast.LENGTH_LONG);
                 break;
             case Constants.BRACKET_STATE_VOTING:
                 //TODO: Switch to voting fragment
@@ -273,7 +281,7 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
                 .commit();
         Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
         user = null;
-        redditUsernameTextView.setText("Log in");
+        redditUsernameTextView.setText("Log in"); //TODO: use a string resource
         //Close the nav drawer if open
         if (navDrawer.isDrawerOpen(navDrawerLayout)) {
             navDrawer.closeDrawer(navDrawerLayout);
