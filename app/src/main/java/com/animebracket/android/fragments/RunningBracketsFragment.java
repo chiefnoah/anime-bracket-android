@@ -27,6 +27,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class RunningBracketsFragment extends Fragment implements JsonStringCallback {
+    public static final String CURRENT_BRACKETS_KEY = "current brackets key";
 
     BracketCardActionCallback callback;
 
@@ -45,9 +46,15 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String cookie = CookieManager.getInstance().getCookie(Constants.BASE_URL) + "";
-        bracketsLoader = new BasicRequestTask(this);
-        bracketsLoader.execute(Constants.BRACKETS_LIST_URL, cookie);
+        if(savedInstanceState != null) {
+            currentBrackets = (ArrayList<Bracket>) savedInstanceState.getSerializable(CURRENT_BRACKETS_KEY);
+        }
+
+        if(currentBrackets.isEmpty()){
+            String cookie = CookieManager.getInstance().getCookie(Constants.BASE_URL) + "";
+            bracketsLoader = new BasicRequestTask(this);
+            bracketsLoader.execute(Constants.BRACKETS_LIST_URL, cookie);
+        }
     }
 
     @Override
@@ -78,9 +85,18 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        //Save the current brackets arrayList
+        if(currentBrackets != null) {
+            outState.putSerializable(CURRENT_BRACKETS_KEY, currentBrackets);
+        }
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
-        bracketsLoader.cancel(true);
+        if(bracketsLoader != null) bracketsLoader.cancel(true);
     }
 
     @Override
@@ -124,10 +140,5 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
     public void onDetach() {
         super.onDetach();
         callback = null;
-    }
-
-    //Quick reference to self so I can access it from inner classes
-    public RunningBracketsFragment getInstance() {
-        return this;
     }
 }
