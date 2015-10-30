@@ -19,4 +19,5 @@
     <color name="cardActionText">#697E77</color>
 
     <color name="characterSuggestItemBackgroundColor">#c4e6dd</color>
+    <color name="colorPrimaryTransparent">#9b333945</color>
 </resources>
