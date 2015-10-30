@@ -19,4 +19,5 @@
     <string name="nominate">Nominate</string>
     <string name="false_text">false</string>
     <string name="empty_string" />
+    <string name="vs">vs</string>
 </resources>
