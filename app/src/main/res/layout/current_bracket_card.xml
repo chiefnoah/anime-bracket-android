@@ -3,8 +3,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
 
     <android.support.v7.widget.CardView
@@ -12,11 +12,11 @@
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:layout_gravity="center"
-        card_view:cardBackgroundColor="@color/cardBackground"
-        card_view:cardCornerRadius="2dp"
         android:layout_margin="8dp"
         android:longClickable="true"
-        android:translationZ="4dp">
+        android:translationZ="4dp"
+        card_view:cardBackgroundColor="@color/cardBackground"
+        card_view:cardCornerRadius="2dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,9 +25,9 @@
             android:background="#00000000">
 
             <TableLayout
+                android:id="@+id/images_table_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/images_table_layout">
+                android:layout_height="wrap_content">
 
                 <TableRow>
 
@@ -89,34 +89,39 @@
                 android:layout_marginBottom="3dp"
                 android:text="Placeholding info text..."
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/colorTextPrimary" />
+                android:textColor="@color/colorTextPrimary"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/current_bracket_title_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/info_text_view"
+                android:layout_below="@+id/images_table_layout"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="3dp"
                 android:text="Contest Title Placeholder"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorTextPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/action_button"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                android:clickable="true"
                 android:text="PLACEHOLDER"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/cardActionText"
-                style="?android:attr/borderlessButtonStyle"
-                android:textSize="22sp"
-                android:clickable="true"
-                android:layout_margin="8dp" />
+                android:textSize="22sp" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
