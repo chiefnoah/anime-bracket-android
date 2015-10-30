@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:translationZ="3dp"
+    android:id="@+id/vote_group_layout">
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardBackground"
+        android:id="@+id/vote_layout_0"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        <ImageView
+            android:id="@+id/vote_image_view_0"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/character_name_vote_0"
+            android:gravity="fill_horizontal"
+            android:textColor="@color/cardActionText"
+            android:textSize="26sp"
+            android:paddingStart="11dp"
+            android:paddingEnd="11dp"
+            android:layout_gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_toEndOf="@+id/vote_image_view_0"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="marquee"
+            android:padding="3dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/character_show_vote_0"
+            android:paddingStart="11dp"
+            android:paddingEnd="11dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignParentTop="false"
+            android:layout_alignLeft="@+id/character_name_vote_0"
+            android:layout_alignStart="@+id/character_name_vote_0"
+            android:layout_below="@+id/character_name_vote_0"
+            android:textColor="@color/colorTextPrimary"
+            android:ellipsize="end"
+            android:padding="3dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardBackground"
+        android:id="@+id/vote_layout_1"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/textView3">
+
+        <ImageView
+            android:id="@+id/vote_image_view_1"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/character_name_vote_1"
+            android:gravity="fill_horizontal"
+            android:textColor="@color/cardActionText"
+            android:textSize="26sp"
+            android:paddingStart="11dp"
+            android:paddingEnd="11dp"
+            android:layout_gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_toEndOf="@+id/vote_image_view_1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="16dp"
+            android:ellipsize="marquee"
+            android:padding="3dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/character_show_vote_1"
+            android:paddingStart="11dp"
+            android:paddingEnd="11dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignParentTop="false"
+            android:layout_alignLeft="@+id/character_name_vote_1"
+            android:layout_alignStart="@+id/character_name_vote_1"
+            android:layout_below="@+id/character_name_vote_1"
+            android:textColor="@color/colorTextPrimary"
+            android:ellipsize="end"
+            android:padding="3dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vs"
+        android:id="@+id/textView3"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:layout_below="@+id/vote_layout_0"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginTop="-24dp"
+        android:translationZ="1dp"
+        android:elevation="1dp"
+        android:layout_marginBottom="-16dp" />
+</RelativeLayout>
