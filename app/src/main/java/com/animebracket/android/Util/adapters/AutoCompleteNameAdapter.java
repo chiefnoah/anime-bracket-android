@@ -27,7 +27,6 @@ public class AutoCompleteNameAdapter extends ArrayAdapter<CharacterInfo> impleme
     Context context;
     int resource;
     ArrayList<CharacterInfo> suggestedCharacters;
-    public ArrayList<CharacterInfo> mObjects;
 
 
     public AutoCompleteNameAdapter(Context context, int resource, ArrayList<CharacterInfo> suggestedCharacters) {
