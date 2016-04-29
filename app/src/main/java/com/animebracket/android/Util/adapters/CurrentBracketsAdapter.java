@@ -2,23 +2,20 @@ package com.animebracket.android.Util.adapters;
 
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.animebracket.android.R;
 import com.animebracket.android.Util.Constants;
-import com.animebracket.android.Util.beans.Bracket;
-import com.animebracket.android.Util.beans.CharacterInfo;
 import com.animebracket.android.Util.callbacks.BracketCardActionCallback;
+import com.animebracket.android.Util.models.Bracket;
+import com.animebracket.android.Util.models.CharacterInfo;
 import com.animebracket.android.fragments.RunningBracketsFragment;
 import com.goebl.david.Response;
 import com.goebl.david.Webb;
@@ -47,6 +44,15 @@ public class CurrentBracketsAdapter extends RecyclerView.Adapter<CurrentBrackets
                 .inflate(R.layout.current_bracket_card, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
+
+        vh.actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = (int) v.getTag();
+                callback.onActionButtonClick(fragment, currentBrackets.get(position));
+            }
+        });
+
         return vh;
     }
 
@@ -57,20 +63,13 @@ public class CurrentBracketsAdapter extends RecyclerView.Adapter<CurrentBrackets
         Bracket cBracket = currentBrackets.get(position);
         holder.bracketTitle.setText(cBracket.getName());
         holder.actionButton.setText(Constants.BRACKET_ACTION_STATE[cBracket.getState()]);
+        holder.actionButton.setTag(holder.getAdapterPosition());
         holder.infoText.setText(Constants.BRACKET_INFO_STATE[cBracket.getState()]);
 
         CharacterInfo[] cRandomCharacterInfos = cBracket.getRandomCharacterInfos();
         for(int i = 0; i < cRandomCharacterInfos.length; i++) {
             Picasso.with(holder.characterImages[i].getContext()).load(Uri.parse(cRandomCharacterInfos[i].getImage())).into(holder.characterImages[i]);
         }
-
-
-        holder.actionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callback.onActionButtonClick(fragment, currentBrackets.get(finalPosition));
-            }
-        });
     }
 
     /**
@@ -107,7 +106,7 @@ public class CurrentBracketsAdapter extends RecyclerView.Adapter<CurrentBrackets
             infoText = (TextView) v.findViewById(R.id.info_text_view);
 
             characterImages = new ImageView[6];
-            //Uhg... all the 9 NINE *NIIIINNEEEE* image views
+
             characterImages[0] = (ImageView) v.findViewById(R.id.contestant_image_view_0);
             characterImages[1] = (ImageView) v.findViewById(R.id.contestant_image_view_1);
             characterImages[2] = (ImageView) v.findViewById(R.id.contestant_image_view_2);
