@@ -1,16 +1,13 @@
 package com.animebracket.android;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -24,16 +21,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.animebracket.android.Util.Constants;
-import com.animebracket.android.Util.beans.Bracket;
-import com.animebracket.android.Util.beans.UserInfo;
 import com.animebracket.android.Util.callbacks.BracketCardActionCallback;
 import com.animebracket.android.Util.callbacks.JsonStringCallback;
+import com.animebracket.android.Util.models.Bracket;
+import com.animebracket.android.Util.models.UserInfo;
 import com.animebracket.android.Util.tasks.BasicRequestTask;
 import com.animebracket.android.fragments.LoginFragment;
 import com.animebracket.android.fragments.NominateFragment;
 import com.animebracket.android.fragments.RulesFragment;
 import com.animebracket.android.fragments.RunningBracketsFragment;
 import com.animebracket.android.fragments.StartupFragment;
+import com.animebracket.android.fragments.VoteFragment;
 import com.google.gson.Gson;
 
 
@@ -227,6 +225,7 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
         //Check bracket state. If it's in nominations, switch to the rules fragment. If it's in voting, open voting bracket, if final open completed brackets fragment
         Fragment newFragment = null;
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        Bundle args; //Put up here because apparently each case group isn't it's own scope -_-
         switch (bracket.getState()) {
             case Constants.BRACKET_STATE_NOMINATIONS:
                 //switch to rules fragment if fragment is instance of RunningBracketsFragment, else switch to nomination fragment
@@ -235,11 +234,11 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
 
                 } else {
                     newFragment = new NominateFragment();
-                    Bundle args = new Bundle();
+                    args = new Bundle();
                     args.putSerializable(Constants.FLAGS.BRACKET_ARG, bracket);
                     newFragment.setArguments(args);
                 }
-                Bundle args = new Bundle();
+                args = new Bundle();
                 args.putSerializable(Constants.FLAGS.BRACKET_ARG, bracket);
                 newFragment.setArguments(args);
                 break;
@@ -248,7 +247,12 @@ public class MainActivity extends ActionBarActivity implements JsonStringCallbac
                 Toast.makeText(this, "Bracket is in eliminations. Not implemented yet... ;_;", Toast.LENGTH_LONG);
                 break;
             case Constants.BRACKET_STATE_VOTING:
-                //TODO: Switch to voting fragment
+                if(fragment.getClass() == RunningBracketsFragment.class) {
+                    newFragment = new VoteFragment();
+                    args = new Bundle();
+                    args.putInt(Constants.FLAGS.BRACKET_ID_ARG, bracket.getId());
+                    newFragment.setArguments(args);
+                }
                 break;
             case Constants.BRACKET_STATE_WILDCARD:
                 //This is basically the same as eliminations. It won't be used anymore... probably
