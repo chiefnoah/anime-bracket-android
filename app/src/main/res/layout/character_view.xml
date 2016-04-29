@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:background="@color/cardBackground"
+    android:id="@+id/character_layout">
+
+    <ImageView
+        android:id="@+id/character_image_view"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@color/colorAccent"
+        android:layout_alignParentEnd="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/character_name"
+        android:gravity="fill_horizontal"
+        android:textColor="@color/cardActionText"
+        android:textSize="16sp"
+        android:layout_gravity="top"
+        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@+id/character_image_view"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="3dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:padding="3dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/character_show"
+        android:textSize="12sp"
+        android:layout_marginStart="5dp"
+        android:layout_alignParentTop="false"
+        android:layout_alignStart="@+id/character_name"
+        android:layout_below="@+id/character_name"
+        android:textColor="@color/colorTextPrimary"
+        android:ellipsize="marquee"
+        android:singleLine="true"/>
+    </RelativeLayout>
