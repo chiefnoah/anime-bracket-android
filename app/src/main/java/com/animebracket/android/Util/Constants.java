@@ -6,10 +6,10 @@ package com.animebracket.android.Util;
 public class Constants {
 
     //URLs
-    public final static String BASE_URL = "http://animebracket.com";
+    public final static String BASE_URL = "https://animebracket.com";
 
     public final static String BRACKETS_LIST_URL = "/api/brackets/";
-    public final static String CHARACTER_IMAGES_URL = "http://cdn.awwni.me/bracket/"; //to be immediately followed by the image name
+    public final static String CHARACTER_IMAGES_URL = "https://cdn.awwni.me/bracket/"; //to be immediately followed by the image name
     public final static String TOURNAMENT_IMAGES_URL = "/images/"; //Server directory that holds images for the brackets
     public final static String CHARACTERS_LIST_URL = "/api/characters/"; //immediately followed by the ID of the bracket you want to get the list of characters for
     public final static String BRACKET_ACTIVE_ROUND_URL = "/api/rounds/"; //followed by bracket ID
@@ -44,6 +44,7 @@ public class Constants {
         public final static String LOGGEDIN = "LOGGED IN";
         public final static String GLOBAL_PREFERENCES = "GLOBAL PREFERENCES";
         public final static String BRACKET_ARG = "BRACKET ARG";
+        public final static String BRACKET_ID_ARG = "BRACKET ID ARG";
         public final static String USER_INFO_BUNDLE = "USER INFO";
         public final static String RUNNING_BRACKETS_BUNDLE = "RUNNING BRACKETS";
         public final static String NOMINATE_CHARACTER_NAME_TEXT = "NOMINATE CHARACTER NAME TEXT";
