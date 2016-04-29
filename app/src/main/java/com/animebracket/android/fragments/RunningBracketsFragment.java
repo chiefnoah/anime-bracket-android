@@ -2,8 +2,8 @@ package com.animebracket.android.fragments;
 
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,9 +15,9 @@ import android.widget.Toast;
 import com.animebracket.android.R;
 import com.animebracket.android.Util.Constants;
 import com.animebracket.android.Util.adapters.CurrentBracketsAdapter;
-import com.animebracket.android.Util.beans.Bracket;
 import com.animebracket.android.Util.callbacks.BracketCardActionCallback;
 import com.animebracket.android.Util.callbacks.JsonStringCallback;
+import com.animebracket.android.Util.models.Bracket;
 import com.animebracket.android.Util.tasks.BasicRequestTask;
 import com.google.gson.Gson;
 
@@ -61,7 +61,7 @@ public class RunningBracketsFragment extends Fragment implements JsonStringCallb
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = (RecyclerView) inflater.inflate(R.layout.brackets_card_list, container, false);
+        rootView = (RecyclerView) inflater.inflate(R.layout.recycled_list, container, false);
         cAdapter = new CurrentBracketsAdapter(this, callback, currentBrackets);
 
         rootView.setHasFixedSize(false); //We don't know the size of the list

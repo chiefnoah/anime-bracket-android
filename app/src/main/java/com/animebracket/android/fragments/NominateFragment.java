@@ -1,11 +1,10 @@
 package com.animebracket.android.fragments;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -23,11 +22,11 @@ import android.widget.Toast;
 import com.animebracket.android.R;
 import com.animebracket.android.Util.Constants;
 import com.animebracket.android.Util.adapters.AutoCompleteNameAdapter;
-import com.animebracket.android.Util.beans.BasicResponse;
-import com.animebracket.android.Util.beans.Bracket;
-import com.animebracket.android.Util.beans.CharacterInfo;
 import com.animebracket.android.Util.callbacks.BracketCardActionCallback;
 import com.animebracket.android.Util.callbacks.JsonStringCallback;
+import com.animebracket.android.Util.models.BasicResponse;
+import com.animebracket.android.Util.models.Bracket;
+import com.animebracket.android.Util.models.CharacterInfo;
 import com.animebracket.android.Util.tasks.NominateTask;
 import com.goebl.david.Response;
 import com.goebl.david.Webb;

@@ -2,7 +2,7 @@ package com.animebracket.android.Util.callbacks;
 
 import android.app.Fragment;
 
-import com.animebracket.android.Util.beans.Bracket;
+import com.animebracket.android.Util.models.Bracket;
 
 /**
  * Created by Noah Pederson on 1/25/2015.

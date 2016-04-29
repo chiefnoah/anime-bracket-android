@@ -4,17 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.animebracket.android.R;
-import com.animebracket.android.Util.beans.CharacterInfo;
+import com.animebracket.android.Util.models.CharacterInfo;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -156,7 +153,7 @@ public class AutoCompleteNameAdapter extends ArrayAdapter<CharacterInfo> impleme
                 if(results.count > 0) {
                     notifyDataSetChanged();
                 } else {
-                    otifyDataSetInvalidated();
+                    notifyDataSetInvalidated();
                 } */
             }
 

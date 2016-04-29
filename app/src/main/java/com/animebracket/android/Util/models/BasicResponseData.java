@@ -1,4 +1,4 @@
-package com.animebracket.android.Util.beans;
+package com.animebracket.android.Util.models;
 
 import java.io.Serializable;
 

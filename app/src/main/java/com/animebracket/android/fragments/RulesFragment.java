@@ -2,28 +2,19 @@ package com.animebracket.android.fragments;
 
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
 import android.app.Fragment;
-import android.text.Html;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.animebracket.android.R;
 import com.animebracket.android.Util.Constants;
-import com.animebracket.android.Util.beans.Bracket;
-import com.animebracket.android.Util.beans.CharacterInfo;
 import com.animebracket.android.Util.callbacks.BracketCardActionCallback;
-import com.animebracket.android.Util.tasks.BasicRequestTask;
-
-import java.util.ArrayList;
+import com.animebracket.android.Util.models.Bracket;
 
 /**
  * A simple {@link Fragment} subclass.
